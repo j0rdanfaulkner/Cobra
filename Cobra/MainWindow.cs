@@ -2,6 +2,8 @@ namespace Cobra
 {
     public partial class MainWindow : Form
     {
+        private List<Circle> Cobra = new List<Circle>();
+        private Circle 
         public MainWindow()
         {
             InitializeComponent();

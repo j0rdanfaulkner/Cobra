@@ -9,16 +9,14 @@ namespace Cobra
     class Cobra
     {
         // properties
-        public static int Width { get; set; }
-        public static int Height { get; set; }
-        public static string currentDirection;
+        public int X { get; set; }
+        public int Y { get; set; }
 
         // constructor
         public Cobra()
         {
-            Width = 16;
-            Height = 16;
-            currentDirection = "left";
+            X = 0;
+            Y = 0;
         }
     }
 }
