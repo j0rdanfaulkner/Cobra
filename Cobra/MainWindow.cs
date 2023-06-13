@@ -8,7 +8,7 @@ namespace Cobra
             lblGameOver.Visible = false;
         }
         private void GameTimerEvent(object sender, EventArgs e)
-        { 
+        {
 
         }
         private void Restart()
@@ -22,6 +22,16 @@ namespace Cobra
         private void GameOver()
         {
             lblGameOver.Visible = true;
+        }
+
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void MainWindow_KeyUp(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }

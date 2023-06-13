@@ -165,6 +165,8 @@
             Controls.Add(pnlContainer);
             Name = "MainWindow";
             Text = "Cobra";
+            KeyDown += MainWindow_KeyDown;
+            KeyUp += MainWindow_KeyUp;
             pnlContainer.ResumeLayout(false);
             pnlBottom.ResumeLayout(false);
             pnlInfo.ResumeLayout(false);

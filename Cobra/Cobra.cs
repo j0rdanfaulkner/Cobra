@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Cobra
 {
-    internal class Cobra
+    class Cobra
     {
+        // properties
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        // constructor
+        public Cobra()
+        {
+            X = 0;
+            Y = 0;
+        }
     }
 }
