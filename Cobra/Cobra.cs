@@ -16,8 +16,8 @@ namespace Cobra
         // constructor
         public Cobra()
         {
-            Width = 32;
-            Height = 32;
+            Width = 24;
+            Height = 24;
             currentDirection = "left";
         }
     }

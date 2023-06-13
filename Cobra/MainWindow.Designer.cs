@@ -174,7 +174,7 @@
             // 
             // tmrTimer
             // 
-            tmrTimer.Interval = 75;
+            tmrTimer.Interval = 50;
             tmrTimer.Tick += GameTimerEvent;
             // 
             // MainWindow

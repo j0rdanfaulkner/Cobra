@@ -79,6 +79,13 @@ namespace Cobra
                     {
                         EatItem();
                     }
+                    for (int j = 1; j < _Cobra.Count; j++)
+                    {
+                        if (_Cobra[i].X == _Cobra[j].X && _Cobra[i].Y == _Cobra[j].Y)
+                        {
+                            GameOver();
+                        }
+                    }
                 }
                 else
                 {
@@ -119,7 +126,17 @@ namespace Cobra
         }
         private void GameOver()
         {
+            tmrTimer.Stop();
             lblGameOver.Visible = true;
+            DialogResult result = MessageBox.Show("Would you like to start another game?", "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                Restart();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
