@@ -16,10 +16,18 @@ namespace Cobra
             lblGameOver.Visible = false;
             StartGame();
         }
+        /// <summary>
+        /// method used to start the first instance of the game by calling the 'Restart' method
+        /// </summary>
         private void StartGame()
         {
             Restart();
         }
+        /// <summary>
+        /// updates the game canvas every interval of the timer, showing when a food item is eaten or when the snake changes direction
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GameTimerEvent(object sender, EventArgs e)
         {
             if (goLeft == true)
@@ -95,13 +103,17 @@ namespace Cobra
                 pbxCanvas.Invalidate();
             }
         }
+        /// <summary>
+        /// resets the game area back to original settings (e.g. resets the score to 0 and the body length of the snake to 10)
+        /// </summary>
         private void Restart()
         {
+            lblGameOver.Visible = false;
             _maxWidth = pbxCanvas.Width / _snake.Width - 1;
             _maxHeight = pbxCanvas.Height / _snake.Height - 1;
             _Cobra.Clear();
             score = 0;
-            lblScore.Text = "Score :" + score;
+            lblScore.Text = "Score : " + score;
             Circle head = new Circle { X = 10, Y = 5 };
             _Cobra.Add(head);
             for (int i = 0; i < 10; i++)
@@ -112,6 +124,9 @@ namespace Cobra
             _item = new Circle { X = r.Next(2, _maxWidth), Y = r.Next(2, _maxHeight) };
             tmrTimer.Start();
         }
+        /// <summary>
+        /// adds 100 to the current score and a new body section to the snake for each food item that is eaten
+        /// </summary>
         private void EatItem()
         {
             score += 100;
@@ -124,6 +139,9 @@ namespace Cobra
             _Cobra.Add(body);
             _item = new Circle { X = r.Next(2, _maxWidth), Y = r.Next(2, _maxHeight) };
         }
+        /// <summary>
+        ///  ends the current game by stopping the timer and asks the player if they want to start another game 
+        /// </summary>
         private void GameOver()
         {
             tmrTimer.Stop();
@@ -138,7 +156,11 @@ namespace Cobra
                 Application.Exit();
             }
         }
-
+        /// <summary>
+        /// checks to see which arrow key was pressed and what direction the current direction needs to be changed to
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left && _snake.currentDirection != "right")
@@ -158,7 +180,11 @@ namespace Cobra
                 goUp = true;
             }
         }
-
+        /// <summary>
+        /// resets the direction variable depending on the last arrow key that was released
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
@@ -178,6 +204,11 @@ namespace Cobra
                 goUp = false;
             }
         }
+        /// <summary>
+        /// draws the snake and food item to the game canvas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateGraphics(object sender, PaintEventArgs e)
         {
             Graphics canvas = e.Graphics;
@@ -208,7 +239,11 @@ namespace Cobra
                         _snake.Height
                     ));
         }
-
+        /// <summary>
+        /// resets the max width and height of the game area when the main window is resized
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainWindow_Resize(object sender, EventArgs e)
         {
             _maxWidth = pbxCanvas.Width / _snake.Width - 1;
