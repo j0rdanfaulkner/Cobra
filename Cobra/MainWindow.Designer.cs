@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pnlContainer = new Panel();
             pnlBottom = new Panel();
             pnlInfo = new Panel();
@@ -38,6 +39,7 @@
             pbxTopWall = new PictureBox();
             pbxRightWall = new PictureBox();
             pbxLeftWall = new PictureBox();
+            tmrTimer = new System.Windows.Forms.Timer(components);
             pnlContainer.SuspendLayout();
             pnlBottom.SuspendLayout();
             pnlInfo.SuspendLayout();
@@ -191,5 +193,6 @@
         private Label lblGameOver;
         private Label lblScore;
         private Panel pnlInfo;
+        private System.Windows.Forms.Timer tmrTimer;
     }
 }

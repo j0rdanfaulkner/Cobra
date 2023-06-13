@@ -9,10 +9,15 @@ namespace Cobra
         private int _maxHeight;
         public int score;
         private bool goLeft, goRight, goUp, goDown;
+        private Random r = new Random();
         public MainWindow()
         {
             InitializeComponent();
             lblGameOver.Visible = false;
+        }
+        private void StartGame()
+        {
+            Restart();
         }
         private void GameTimerEvent(object sender, EventArgs e)
         {
@@ -20,7 +25,20 @@ namespace Cobra
         }
         private void Restart()
         {
-
+            _maxWidth = pnlGameArea.Width / _snake.Width - 1;
+            _maxHeight = pnlGameArea.Height / _snake.Height - 1;
+            _Cobra.Clear();
+            score = 0;
+            lblScore.Text = "Score :" + score;
+            Circle head = new Circle { X = 10, Y = 5 };
+            _Cobra.Add(head);
+            for (int i = 0; i < 10; i++)
+            {
+                Circle body = new Circle();
+                _Cobra.Add(body);
+            }
+            _foodItem = new Circle { X = r.Next(2, _maxWidth), Y = r.Next(2, _maxHeight) };
+            tmrTimer.Start();
         }
         private void EatItem()
         {
@@ -53,7 +71,22 @@ namespace Cobra
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Left)
+            {
+                goLeft = false;
+            }
+            else if (e.KeyCode == Keys.Right)
+            {
+                goRight = false;
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                goDown = false;
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                goUp = false;
+            }
         }
     }
 }
