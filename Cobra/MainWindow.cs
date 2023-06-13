@@ -4,7 +4,7 @@ namespace Cobra
     {
         private List<Circle> _Cobra = new List<Circle>();
         private Cobra _snake = new Cobra();
-        private Circle _foodItem = new Circle();
+        private Circle _item = new Circle();
         private int _maxWidth;
         private int _maxHeight;
         public int score;
@@ -63,17 +63,21 @@ namespace Cobra
                     {
                         _Cobra[i].X = _maxWidth;
                     }
-                    if (_Cobra[i].X > _maxWidth)
+                    else if (_Cobra[i].X > _maxWidth)
                     {
                         _Cobra[i].X = 0;
                     }
-                    if (_Cobra[i].Y < 0)
+                    else if (_Cobra[i].Y < 0)
                     {
                         _Cobra[i].Y = _maxHeight;
                     }
-                    if (_Cobra[i].Y > _maxHeight)
+                    else if (_Cobra[i].Y > _maxHeight)
                     {
                         _Cobra[i].Y = 0;
+                    }
+                    else if (_Cobra[i].X == _item.X && _Cobra[i].Y == _item.Y)
+                    {
+                        EatItem();
                     }
                 }
                 else
@@ -98,12 +102,20 @@ namespace Cobra
                 Circle body = new Circle();
                 _Cobra.Add(body);
             }
-            _foodItem = new Circle { X = r.Next(2, _maxWidth), Y = r.Next(2, _maxHeight) };
+            _item = new Circle { X = r.Next(2, _maxWidth), Y = r.Next(2, _maxHeight) };
             tmrTimer.Start();
         }
         private void EatItem()
         {
-
+            score += 100;
+            lblScore.Text = "Score: " + score;
+            Circle body = new Circle
+            {
+                X = _Cobra[_Cobra.Count - 1].X,
+                Y = _Cobra[_Cobra.Count - 1].Y
+            };
+            _Cobra.Add(body);
+            _item = new Circle { X = r.Next(2, _maxWidth), Y = r.Next(2, _maxHeight) };
         }
         private void GameOver()
         {
@@ -173,8 +185,8 @@ namespace Cobra
             }
             canvas.FillEllipse(Brushes.DarkRed, new Rectangle
                     (
-                        _foodItem.X * _snake.Width,
-                        _foodItem.Y * _snake.Height,
+                        _item.X * _snake.Width,
+                        _item.Y * _snake.Height,
                         _snake.Width,
                         _snake.Height
                     ));
