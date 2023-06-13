@@ -21,7 +21,7 @@ namespace Cobra
         }
         private void GameTimerEvent(object sender, EventArgs e)
         {
-
+            
         }
         private void Restart()
         {
@@ -87,6 +87,36 @@ namespace Cobra
             {
                 goUp = false;
             }
+        }
+        private void UpdateGraphics(object sender, PaintEventArgs e)
+        {
+            Graphics canvas = e.Graphics;
+            Brush cobraColour;
+            for (int i = 0; i < _Cobra.Count; i++)
+            {
+                if (i == 0)
+                {
+                    cobraColour = Brushes.Black;
+                }
+                else
+                {
+                    cobraColour = Brushes.Olive;
+                }
+                canvas.FillEllipse(cobraColour, new Rectangle
+                    (
+                        _Cobra[i].X * _snake.Width,
+                        _Cobra[i].Y * _snake.Height,
+                        _snake.Width,
+                        _snake.Height
+                    ));
+            }
+            canvas.FillEllipse(Brushes.DarkRed, new Rectangle
+                    (
+                        _foodItem.X * _snake.Width,
+                        _foodItem.Y * _snake.Height,
+                        _snake.Width,
+                        _snake.Height
+                    ));
         }
     }
 }
