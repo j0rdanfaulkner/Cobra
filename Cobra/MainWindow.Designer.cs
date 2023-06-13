@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             pnlContainer = new Panel();
             pnlBottom = new Panel();
             pnlInfo = new Panel();
@@ -68,9 +69,9 @@
             // 
             pnlBottom.Controls.Add(pnlInfo);
             pnlBottom.Dock = DockStyle.Top;
-            pnlBottom.Location = new Point(0, 500);
+            pnlBottom.Location = new Point(0, 611);
             pnlBottom.Name = "pnlBottom";
-            pnlBottom.Size = new Size(734, 212);
+            pnlBottom.Size = new Size(734, 103);
             pnlBottom.TabIndex = 2;
             // 
             // pnlInfo
@@ -80,7 +81,7 @@
             pnlInfo.Dock = DockStyle.Fill;
             pnlInfo.Location = new Point(0, 0);
             pnlInfo.Name = "pnlInfo";
-            pnlInfo.Size = new Size(734, 212);
+            pnlInfo.Size = new Size(734, 103);
             pnlInfo.TabIndex = 2;
             // 
             // lblGameOver
@@ -89,7 +90,7 @@
             lblGameOver.AutoSize = true;
             lblGameOver.BackColor = Color.Transparent;
             lblGameOver.ForeColor = Color.DarkRed;
-            lblGameOver.Location = new Point(291, 89);
+            lblGameOver.Location = new Point(291, 34);
             lblGameOver.Name = "lblGameOver";
             lblGameOver.Size = new Size(153, 35);
             lblGameOver.TabIndex = 1;
@@ -99,7 +100,7 @@
             // 
             lblScore.Anchor = AnchorStyles.None;
             lblScore.AutoSize = true;
-            lblScore.Location = new Point(24, 21);
+            lblScore.Location = new Point(29, 34);
             lblScore.Name = "lblScore";
             lblScore.Size = new Size(95, 35);
             lblScore.TabIndex = 0;
@@ -115,7 +116,7 @@
             pnlGameArea.Dock = DockStyle.Top;
             pnlGameArea.Location = new Point(0, 0);
             pnlGameArea.Name = "pnlGameArea";
-            pnlGameArea.Size = new Size(734, 500);
+            pnlGameArea.Size = new Size(734, 611);
             pnlGameArea.TabIndex = 0;
             // 
             // pbxCanvas
@@ -123,7 +124,7 @@
             pbxCanvas.Dock = DockStyle.Fill;
             pbxCanvas.Location = new Point(15, 15);
             pbxCanvas.Name = "pbxCanvas";
-            pbxCanvas.Size = new Size(704, 470);
+            pbxCanvas.Size = new Size(704, 581);
             pbxCanvas.TabIndex = 4;
             pbxCanvas.TabStop = false;
             pbxCanvas.Paint += UpdateGraphics;
@@ -132,7 +133,7 @@
             // 
             pbxBottomWall.BackColor = Color.DarkOrange;
             pbxBottomWall.Dock = DockStyle.Bottom;
-            pbxBottomWall.Location = new Point(15, 485);
+            pbxBottomWall.Location = new Point(15, 596);
             pbxBottomWall.Name = "pbxBottomWall";
             pbxBottomWall.Size = new Size(704, 15);
             pbxBottomWall.TabIndex = 3;
@@ -156,7 +157,7 @@
             pbxRightWall.Dock = DockStyle.Right;
             pbxRightWall.Location = new Point(719, 0);
             pbxRightWall.Name = "pbxRightWall";
-            pbxRightWall.Size = new Size(15, 500);
+            pbxRightWall.Size = new Size(15, 611);
             pbxRightWall.TabIndex = 1;
             pbxRightWall.TabStop = false;
             pbxRightWall.Tag = "wall";
@@ -167,7 +168,7 @@
             pbxLeftWall.Dock = DockStyle.Left;
             pbxLeftWall.Location = new Point(0, 0);
             pbxLeftWall.Name = "pbxLeftWall";
-            pbxLeftWall.Size = new Size(15, 500);
+            pbxLeftWall.Size = new Size(15, 611);
             pbxLeftWall.TabIndex = 0;
             pbxLeftWall.TabStop = false;
             pbxLeftWall.Tag = "wall";
@@ -183,6 +184,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(734, 711);
             Controls.Add(pnlContainer);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainWindow";
             Text = "Cobra";
             KeyDown += MainWindow_KeyDown;
