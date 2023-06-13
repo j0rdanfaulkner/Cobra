@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Cobra
 {
-    class Cobra
+    class Circle
     {
         // properties
         public int X { get; set; }
         public int Y { get; set; }
 
         // constructor
-        public Cobra()
+        public Circle()
         {
             X = 0;
             Y = 0;
