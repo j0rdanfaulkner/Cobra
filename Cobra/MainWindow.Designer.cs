@@ -174,7 +174,7 @@
             // 
             // tmrTimer
             // 
-            tmrTimer.Interval = 20;
+            tmrTimer.Interval = 75;
             tmrTimer.Tick += GameTimerEvent;
             // 
             // MainWindow
@@ -187,6 +187,7 @@
             Text = "Cobra";
             KeyDown += MainWindow_KeyDown;
             KeyUp += MainWindow_KeyUp;
+            Resize += MainWindow_Resize;
             pnlContainer.ResumeLayout(false);
             pnlBottom.ResumeLayout(false);
             pnlInfo.ResumeLayout(false);

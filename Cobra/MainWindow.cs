@@ -52,7 +52,7 @@ namespace Cobra
                             break;
                         case "up":
                             _Cobra[i].Y--;
-                            break; 
+                            break;
                         case "down":
                             _Cobra[i].Y++;
                             break;
@@ -61,19 +61,19 @@ namespace Cobra
                     }
                     if (_Cobra[i].X < 0)
                     {
-                        GameOver();
+                        _Cobra[i].X = _maxWidth;
                     }
                     if (_Cobra[i].X > _maxWidth)
                     {
-                        GameOver();
+                        _Cobra[i].X = 0;
                     }
                     if (_Cobra[i].Y < 0)
                     {
-                        GameOver();
+                        _Cobra[i].Y = _maxHeight;
                     }
                     if (_Cobra[i].Y > _maxHeight)
                     {
-                        GameOver();
+                        _Cobra[i].Y = 0;
                     }
                 }
                 else
@@ -178,6 +178,12 @@ namespace Cobra
                         _snake.Width,
                         _snake.Height
                     ));
+        }
+
+        private void MainWindow_Resize(object sender, EventArgs e)
+        {
+            _maxWidth = pbxCanvas.Width / _snake.Width - 1;
+            _maxHeight = pbxCanvas.Height / _snake.Height - 1;
         }
     }
 }
