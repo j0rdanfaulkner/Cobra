@@ -14,6 +14,7 @@ namespace Cobra
         {
             InitializeComponent();
             lblGameOver.Visible = false;
+            StartGame();
         }
         private void StartGame()
         {
@@ -21,12 +22,72 @@ namespace Cobra
         }
         private void GameTimerEvent(object sender, EventArgs e)
         {
-            
+            if (goLeft == true)
+            {
+                _snake.currentDirection = "left";
+            }
+            else if (goRight == true)
+            {
+                _snake.currentDirection = "right";
+            }
+            else if (goUp == true)
+            {
+                _snake.currentDirection = "up";
+            }
+            else if (goDown == true)
+            {
+                _snake.currentDirection = "down";
+            }
+            for (int i = _Cobra.Count - 1; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    switch (_snake.currentDirection)
+                    {
+                        case "left":
+                            _Cobra[i].X--;
+                            break;
+                        case "right":
+                            _Cobra[i].X++;
+                            break;
+                        case "up":
+                            _Cobra[i].Y--;
+                            break; 
+                        case "down":
+                            _Cobra[i].Y++;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (_Cobra[i].X < 0)
+                    {
+                        GameOver();
+                    }
+                    if (_Cobra[i].X > _maxWidth)
+                    {
+                        GameOver();
+                    }
+                    if (_Cobra[i].Y < 0)
+                    {
+                        GameOver();
+                    }
+                    if (_Cobra[i].Y > _maxHeight)
+                    {
+                        GameOver();
+                    }
+                }
+                else
+                {
+                    _Cobra[i].X = _Cobra[i - 1].X;
+                    _Cobra[i].Y = _Cobra[i - 1].Y;
+                }
+                pbxCanvas.Invalidate();
+            }
         }
         private void Restart()
         {
-            _maxWidth = pnlGameArea.Width / _snake.Width - 1;
-            _maxHeight = pnlGameArea.Height / _snake.Height - 1;
+            _maxWidth = pbxCanvas.Width / _snake.Width - 1;
+            _maxHeight = pbxCanvas.Height / _snake.Height - 1;
             _Cobra.Clear();
             score = 0;
             lblScore.Text = "Score :" + score;

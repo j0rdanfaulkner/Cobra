@@ -35,6 +35,7 @@
             lblGameOver = new Label();
             lblScore = new Label();
             pnlGameArea = new Panel();
+            pbxCanvas = new PictureBox();
             pbxBottomWall = new PictureBox();
             pbxTopWall = new PictureBox();
             pbxRightWall = new PictureBox();
@@ -44,6 +45,7 @@
             pnlBottom.SuspendLayout();
             pnlInfo.SuspendLayout();
             pnlGameArea.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbxCanvas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxBottomWall).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxTopWall).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxRightWall).BeginInit();
@@ -105,6 +107,7 @@
             // 
             // pnlGameArea
             // 
+            pnlGameArea.Controls.Add(pbxCanvas);
             pnlGameArea.Controls.Add(pbxBottomWall);
             pnlGameArea.Controls.Add(pbxTopWall);
             pnlGameArea.Controls.Add(pbxRightWall);
@@ -114,6 +117,16 @@
             pnlGameArea.Name = "pnlGameArea";
             pnlGameArea.Size = new Size(734, 500);
             pnlGameArea.TabIndex = 0;
+            // 
+            // pbxCanvas
+            // 
+            pbxCanvas.Dock = DockStyle.Fill;
+            pbxCanvas.Location = new Point(15, 15);
+            pbxCanvas.Name = "pbxCanvas";
+            pbxCanvas.Size = new Size(704, 470);
+            pbxCanvas.TabIndex = 4;
+            pbxCanvas.TabStop = false;
+            pbxCanvas.Paint += UpdateGraphics;
             // 
             // pbxBottomWall
             // 
@@ -159,6 +172,11 @@
             pbxLeftWall.TabStop = false;
             pbxLeftWall.Tag = "wall";
             // 
+            // tmrTimer
+            // 
+            tmrTimer.Interval = 20;
+            tmrTimer.Tick += GameTimerEvent;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -174,6 +192,7 @@
             pnlInfo.ResumeLayout(false);
             pnlInfo.PerformLayout();
             pnlGameArea.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbxCanvas).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxBottomWall).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxTopWall).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxRightWall).EndInit();
@@ -194,5 +213,6 @@
         private Label lblScore;
         private Panel pnlInfo;
         private System.Windows.Forms.Timer tmrTimer;
+        private PictureBox pbxCanvas;
     }
 }
