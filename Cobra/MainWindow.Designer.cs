@@ -33,6 +33,7 @@
             pnlContainer = new Panel();
             pnlBottom = new Panel();
             pnlInfo = new Panel();
+            btnRestart = new Button();
             lblGameOver = new Label();
             lblScore = new Label();
             pnlGameArea = new Panel();
@@ -76,6 +77,7 @@
             // 
             // pnlInfo
             // 
+            pnlInfo.Controls.Add(btnRestart);
             pnlInfo.Controls.Add(lblGameOver);
             pnlInfo.Controls.Add(lblScore);
             pnlInfo.Dock = DockStyle.Fill;
@@ -84,9 +86,24 @@
             pnlInfo.Size = new Size(734, 103);
             pnlInfo.TabIndex = 2;
             // 
+            // btnRestart
+            // 
+            btnRestart.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btnRestart.BackColor = Color.DarkOrange;
+            btnRestart.Cursor = Cursors.Hand;
+            btnRestart.FlatAppearance.BorderColor = Color.Peru;
+            btnRestart.FlatAppearance.BorderSize = 3;
+            btnRestart.Location = new Point(560, 23);
+            btnRestart.Name = "btnRestart";
+            btnRestart.Size = new Size(150, 56);
+            btnRestart.TabIndex = 2;
+            btnRestart.Text = "START";
+            btnRestart.UseVisualStyleBackColor = false;
+            btnRestart.Click += btnRestart_Click;
+            // 
             // lblGameOver
             // 
-            lblGameOver.Anchor = AnchorStyles.None;
+            lblGameOver.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblGameOver.AutoSize = true;
             lblGameOver.BackColor = Color.Transparent;
             lblGameOver.ForeColor = Color.DarkRed;
@@ -98,7 +115,7 @@
             // 
             // lblScore
             // 
-            lblScore.Anchor = AnchorStyles.None;
+            lblScore.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblScore.AutoSize = true;
             lblScore.Location = new Point(29, 34);
             lblScore.Name = "lblScore";
@@ -175,7 +192,7 @@
             // 
             // tmrTimer
             // 
-            tmrTimer.Interval = 50;
+            tmrTimer.Interval = 25;
             tmrTimer.Tick += GameTimerEvent;
             // 
             // MainWindow
@@ -217,5 +234,6 @@
         private Panel pnlInfo;
         private System.Windows.Forms.Timer tmrTimer;
         private PictureBox pbxCanvas;
+        private Button btnRestart;
     }
 }

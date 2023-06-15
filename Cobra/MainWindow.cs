@@ -14,7 +14,7 @@ namespace Cobra
         {
             InitializeComponent();
             lblGameOver.Visible = false;
-            StartGame();
+            btnRestart.Text = "START";
         }
         /// <summary>
         /// method used to start the first instance of the game by calling the 'Restart' method
@@ -113,7 +113,7 @@ namespace Cobra
             _maxHeight = pbxCanvas.Height / _snake.Height - 1;
             _Cobra.Clear();
             score = 0;
-            lblScore.Text = "Score : " + score;
+            lblScore.Text = "SCORE: " + score;
             Circle head = new Circle { X = 10, Y = 5 };
             _Cobra.Add(head);
             for (int i = 0; i < 10; i++)
@@ -123,6 +123,7 @@ namespace Cobra
             }
             _item = new Circle { X = r.Next(2, _maxWidth), Y = r.Next(2, _maxHeight) };
             tmrTimer.Start();
+            btnRestart.Enabled = false;
         }
         /// <summary>
         /// adds 100 to the current score and a new body section to the snake for each food item that is eaten
@@ -130,7 +131,7 @@ namespace Cobra
         private void EatItem()
         {
             score += 100;
-            lblScore.Text = "Score: " + score;
+            lblScore.Text = "SCORE: " + score;
             Circle body = new Circle
             {
                 X = _Cobra[_Cobra.Count - 1].X,
@@ -140,21 +141,14 @@ namespace Cobra
             _item = new Circle { X = r.Next(2, _maxWidth), Y = r.Next(2, _maxHeight) };
         }
         /// <summary>
-        ///  ends the current game by stopping the timer and asks the player if they want to start another game 
+        ///  ends the current game by stopping the timer and sets the start/restart button text to 'restart'
         /// </summary>
         private void GameOver()
         {
             tmrTimer.Stop();
             lblGameOver.Visible = true;
-            DialogResult result = MessageBox.Show("Would you like to start another game?", "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                Restart();
-            }
-            else
-            {
-                Application.Exit();
-            }
+            btnRestart.Enabled = true;
+            btnRestart.Text = "RESTART";
         }
         /// <summary>
         /// checks to see which arrow key was pressed and what direction the current direction needs to be changed to
@@ -248,6 +242,22 @@ namespace Cobra
         {
             _maxWidth = pbxCanvas.Width / _snake.Width - 1;
             _maxHeight = pbxCanvas.Height / _snake.Height - 1;
+        }
+        /// <summary>
+        /// trigger event for the start/restart game button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            if (btnRestart.Text == "START")
+            {
+                StartGame();
+            }
+            else if (btnRestart.Text == "RESTART")
+            {
+                Restart();
+            }
         }
     }
 }
