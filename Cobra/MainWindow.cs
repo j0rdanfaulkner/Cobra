@@ -1,3 +1,5 @@
+using System.DirectoryServices.ActiveDirectory;
+
 namespace Cobra
 {
     public partial class MainWindow : Form
@@ -10,11 +12,15 @@ namespace Cobra
         public int score;
         private bool goLeft, goRight, goUp, goDown;
         private Random r = new Random();
+        private const int _SLOW = 45;
+        private const int _DEFAULT = 30;
+        private const int _FAST = 15;
         public MainWindow()
         {
             InitializeComponent();
             lblGameOver.Visible = false;
             btnRestart.Text = "START";
+            tmrTimer.Interval = _DEFAULT;
         }
         /// <summary>
         /// method used to start the first instance of the game by calling the 'Restart' method
@@ -258,6 +264,30 @@ namespace Cobra
             {
                 Restart();
             }
+        }
+
+        private void rbtnFast_CheckedChanged(object sender, EventArgs e)
+        {
+            tmrTimer.Interval = _FAST;
+            rbtnFast.Enabled = false;
+            rbtnDefault.Enabled = true;
+            rbtnSlow.Enabled = true;
+        }
+
+        private void rbtnDefault_CheckedChanged(object sender, EventArgs e)
+        {
+            tmrTimer.Interval = _DEFAULT;
+            rbtnFast.Enabled = true;
+            rbtnDefault.Enabled = false;
+            rbtnSlow.Enabled = true;
+        }
+
+        private void rbtnSlow_CheckedChanged(object sender, EventArgs e)
+        {
+            tmrTimer.Interval = _SLOW;
+            rbtnFast.Enabled = true;
+            rbtnDefault.Enabled = true;
+            rbtnSlow.Enabled = false;
         }
     }
 }

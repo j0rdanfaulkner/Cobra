@@ -33,6 +33,10 @@
             pnlContainer = new Panel();
             pnlBottom = new Panel();
             pnlInfo = new Panel();
+            label1 = new Label();
+            rbtnFast = new RadioButton();
+            rbtnDefault = new RadioButton();
+            rbtnSlow = new RadioButton();
             btnRestart = new Button();
             lblGameOver = new Label();
             lblScore = new Label();
@@ -63,7 +67,7 @@
             pnlContainer.Font = new Font("EurostileLTW03-BoldCond", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point);
             pnlContainer.Location = new Point(0, 0);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(734, 711);
+            pnlContainer.Size = new Size(734, 782);
             pnlContainer.TabIndex = 0;
             // 
             // pnlBottom
@@ -72,19 +76,71 @@
             pnlBottom.Dock = DockStyle.Top;
             pnlBottom.Location = new Point(0, 611);
             pnlBottom.Name = "pnlBottom";
-            pnlBottom.Size = new Size(734, 103);
+            pnlBottom.Size = new Size(734, 171);
             pnlBottom.TabIndex = 2;
             // 
             // pnlInfo
             // 
+            pnlInfo.Controls.Add(label1);
+            pnlInfo.Controls.Add(rbtnFast);
+            pnlInfo.Controls.Add(rbtnDefault);
+            pnlInfo.Controls.Add(rbtnSlow);
             pnlInfo.Controls.Add(btnRestart);
             pnlInfo.Controls.Add(lblGameOver);
             pnlInfo.Controls.Add(lblScore);
             pnlInfo.Dock = DockStyle.Fill;
             pnlInfo.Location = new Point(0, 0);
             pnlInfo.Name = "pnlInfo";
-            pnlInfo.Size = new Size(734, 103);
+            pnlInfo.Size = new Size(734, 171);
             pnlInfo.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(29, 120);
+            label1.Name = "label1";
+            label1.Size = new Size(189, 35);
+            label1.TabIndex = 6;
+            label1.Text = "CHANGE SPEED:";
+            // 
+            // rbtnFast
+            // 
+            rbtnFast.AutoSize = true;
+            rbtnFast.Cursor = Cursors.Hand;
+            rbtnFast.Location = new Point(625, 120);
+            rbtnFast.Name = "rbtnFast";
+            rbtnFast.Size = new Size(85, 39);
+            rbtnFast.TabIndex = 5;
+            rbtnFast.TabStop = true;
+            rbtnFast.Text = "FAST";
+            rbtnFast.UseVisualStyleBackColor = true;
+            rbtnFast.CheckedChanged += rbtnFast_CheckedChanged;
+            // 
+            // rbtnDefault
+            // 
+            rbtnDefault.AutoSize = true;
+            rbtnDefault.Cursor = Cursors.Hand;
+            rbtnDefault.Location = new Point(429, 120);
+            rbtnDefault.Name = "rbtnDefault";
+            rbtnDefault.Size = new Size(121, 39);
+            rbtnDefault.TabIndex = 4;
+            rbtnDefault.TabStop = true;
+            rbtnDefault.Text = "DEFAULT";
+            rbtnDefault.UseVisualStyleBackColor = true;
+            rbtnDefault.CheckedChanged += rbtnDefault_CheckedChanged;
+            // 
+            // rbtnSlow
+            // 
+            rbtnSlow.AutoSize = true;
+            rbtnSlow.Cursor = Cursors.Hand;
+            rbtnSlow.Location = new Point(263, 120);
+            rbtnSlow.Name = "rbtnSlow";
+            rbtnSlow.Size = new Size(98, 39);
+            rbtnSlow.TabIndex = 3;
+            rbtnSlow.TabStop = true;
+            rbtnSlow.Text = "SLOW";
+            rbtnSlow.UseVisualStyleBackColor = true;
+            rbtnSlow.CheckedChanged += rbtnSlow_CheckedChanged;
             // 
             // btnRestart
             // 
@@ -95,7 +151,7 @@
             btnRestart.FlatAppearance.BorderSize = 3;
             btnRestart.Location = new Point(560, 23);
             btnRestart.Name = "btnRestart";
-            btnRestart.Size = new Size(150, 56);
+            btnRestart.Size = new Size(150, 57);
             btnRestart.TabIndex = 2;
             btnRestart.Text = "START";
             btnRestart.UseVisualStyleBackColor = false;
@@ -199,7 +255,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(734, 711);
+            ClientSize = new Size(734, 782);
             Controls.Add(pnlContainer);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainWindow";
@@ -235,5 +291,9 @@
         private System.Windows.Forms.Timer tmrTimer;
         private PictureBox pbxCanvas;
         private Button btnRestart;
+        private RadioButton rbtnFast;
+        private RadioButton rbtnDefault;
+        private RadioButton rbtnSlow;
+        private Label label1;
     }
 }

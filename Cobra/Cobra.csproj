@@ -6,6 +6,27 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <Title>Cobra</Title>
+    <Authors>Jordan Faulkner</Authors>
+    <Description>A C# version of the well-known mobile phone game, "Snake"</Description>
+    <Copyright>© 2023 Jordan Faulkner</Copyright>
+    <PackageProjectUrl>https://www.jordan-faulkner.com/cobra/install.html</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/j0rdanfaulkner/Cobra</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>First stable release</PackageReleaseNotes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Cobra\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
