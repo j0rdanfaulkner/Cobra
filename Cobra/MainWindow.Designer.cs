@@ -33,8 +33,9 @@
             pnlContainer = new Panel();
             pnlBottom = new Panel();
             pnlInfo = new Panel();
+            lblDifficulty = new Label();
             tbrSpeed = new TrackBar();
-            label1 = new Label();
+            lblChangeSpeed = new Label();
             btnRestart = new Button();
             lblGameOver = new Label();
             lblScore = new Label();
@@ -80,8 +81,9 @@
             // 
             // pnlInfo
             // 
+            pnlInfo.Controls.Add(lblDifficulty);
             pnlInfo.Controls.Add(tbrSpeed);
-            pnlInfo.Controls.Add(label1);
+            pnlInfo.Controls.Add(lblChangeSpeed);
             pnlInfo.Controls.Add(btnRestart);
             pnlInfo.Controls.Add(lblGameOver);
             pnlInfo.Controls.Add(lblScore);
@@ -91,32 +93,45 @@
             pnlInfo.Size = new Size(734, 171);
             pnlInfo.TabIndex = 2;
             // 
+            // lblDifficulty
+            // 
+            lblDifficulty.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            lblDifficulty.AutoSize = true;
+            lblDifficulty.Location = new Point(614, 120);
+            lblDifficulty.Name = "lblDifficulty";
+            lblDifficulty.Size = new Size(103, 35);
+            lblDifficulty.TabIndex = 8;
+            lblDifficulty.Text = "DEFAULT";
+            lblDifficulty.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // tbrSpeed
             // 
+            tbrSpeed.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             tbrSpeed.BackColor = Color.Moccasin;
             tbrSpeed.Cursor = Cursors.Hand;
-            tbrSpeed.Location = new Point(252, 123);
+            tbrSpeed.Location = new Point(231, 124);
             tbrSpeed.Maximum = 45;
             tbrSpeed.Minimum = 1;
             tbrSpeed.Name = "tbrSpeed";
             tbrSpeed.RightToLeft = RightToLeft.Yes;
-            tbrSpeed.Size = new Size(458, 45);
+            tbrSpeed.Size = new Size(372, 45);
             tbrSpeed.SmallChange = 5;
-            tbrSpeed.TabIndex = 7;
+            tbrSpeed.TabIndex = 5;
             tbrSpeed.TickFrequency = 3;
             tbrSpeed.Value = 1;
             tbrSpeed.Scroll += tbrSpeed_Scroll;
             tbrSpeed.KeyDown += tbrSpeed_KeyDown;
             tbrSpeed.KeyUp += tbrSpeed_KeyUp;
             // 
-            // label1
+            // lblChangeSpeed
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(29, 120);
-            label1.Name = "label1";
-            label1.Size = new Size(189, 35);
-            label1.TabIndex = 6;
-            label1.Text = "CHANGE SPEED:";
+            lblChangeSpeed.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            lblChangeSpeed.AutoSize = true;
+            lblChangeSpeed.Location = new Point(29, 120);
+            lblChangeSpeed.Name = "lblChangeSpeed";
+            lblChangeSpeed.Size = new Size(189, 35);
+            lblChangeSpeed.TabIndex = 6;
+            lblChangeSpeed.Text = "CHANGE SPEED:";
             // 
             // btnRestart
             // 
@@ -268,7 +283,8 @@
         private System.Windows.Forms.Timer tmrTimer;
         private PictureBox pbxCanvas;
         private Button btnRestart;
-        private Label label1;
+        private Label lblChangeSpeed;
         private TrackBar tbrSpeed;
+        private Label lblDifficulty;
     }
 }

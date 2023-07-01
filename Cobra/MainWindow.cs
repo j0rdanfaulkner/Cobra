@@ -13,9 +13,9 @@ namespace Cobra
         public int score;
         private bool goLeft, goRight, goUp, goDown;
         private Random r = new Random();
-        private const int _SLOW = 45;
+        private const int _SLOW = 10;
         private const int _DEFAULT = 30;
-        private const int _FAST = 15;
+        private const int _FAST = 50;
         public MainWindow()
         {
             InitializeComponent();
@@ -245,6 +245,18 @@ namespace Cobra
         private void tbrSpeed_Scroll(object sender, EventArgs e)
         {
             tmrTimer.Interval = tbrSpeed.Value;
+            if (tbrSpeed.Value > 1 && tbrSpeed.Value <= _SLOW)
+            {
+                lblDifficulty.Text = "FAST";
+            }
+            else if (tbrSpeed.Value > _SLOW && tbrSpeed.Value <= _DEFAULT)
+            {
+                lblDifficulty.Text = "DEFAULT";
+            }
+            else if (tbrSpeed.Value > _DEFAULT && tbrSpeed.Value <= _FAST)
+            {
+                lblDifficulty.Text = "SLOW";
+            }
         }
         private void tbrSpeed_KeyDown(object sender, KeyEventArgs e)
         {
