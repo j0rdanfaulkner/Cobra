@@ -33,10 +33,8 @@
             pnlContainer = new Panel();
             pnlBottom = new Panel();
             pnlInfo = new Panel();
+            tbrSpeed = new TrackBar();
             label1 = new Label();
-            rbtnFast = new RadioButton();
-            rbtnDefault = new RadioButton();
-            rbtnSlow = new RadioButton();
             btnRestart = new Button();
             lblGameOver = new Label();
             lblScore = new Label();
@@ -50,6 +48,7 @@
             pnlContainer.SuspendLayout();
             pnlBottom.SuspendLayout();
             pnlInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tbrSpeed).BeginInit();
             pnlGameArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbxCanvas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxBottomWall).BeginInit();
@@ -81,10 +80,8 @@
             // 
             // pnlInfo
             // 
+            pnlInfo.Controls.Add(tbrSpeed);
             pnlInfo.Controls.Add(label1);
-            pnlInfo.Controls.Add(rbtnFast);
-            pnlInfo.Controls.Add(rbtnDefault);
-            pnlInfo.Controls.Add(rbtnSlow);
             pnlInfo.Controls.Add(btnRestart);
             pnlInfo.Controls.Add(lblGameOver);
             pnlInfo.Controls.Add(lblScore);
@@ -94,6 +91,24 @@
             pnlInfo.Size = new Size(734, 171);
             pnlInfo.TabIndex = 2;
             // 
+            // tbrSpeed
+            // 
+            tbrSpeed.BackColor = Color.Moccasin;
+            tbrSpeed.Cursor = Cursors.Hand;
+            tbrSpeed.Location = new Point(252, 123);
+            tbrSpeed.Maximum = 45;
+            tbrSpeed.Minimum = 1;
+            tbrSpeed.Name = "tbrSpeed";
+            tbrSpeed.RightToLeft = RightToLeft.Yes;
+            tbrSpeed.Size = new Size(458, 45);
+            tbrSpeed.SmallChange = 5;
+            tbrSpeed.TabIndex = 7;
+            tbrSpeed.TickFrequency = 3;
+            tbrSpeed.Value = 1;
+            tbrSpeed.Scroll += tbrSpeed_Scroll;
+            tbrSpeed.KeyDown += tbrSpeed_KeyDown;
+            tbrSpeed.KeyPress += tbrSpeed_KeyPress;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -102,45 +117,6 @@
             label1.Size = new Size(189, 35);
             label1.TabIndex = 6;
             label1.Text = "CHANGE SPEED:";
-            // 
-            // rbtnFast
-            // 
-            rbtnFast.AutoSize = true;
-            rbtnFast.Cursor = Cursors.Hand;
-            rbtnFast.Location = new Point(625, 120);
-            rbtnFast.Name = "rbtnFast";
-            rbtnFast.Size = new Size(85, 39);
-            rbtnFast.TabIndex = 5;
-            rbtnFast.TabStop = true;
-            rbtnFast.Text = "FAST";
-            rbtnFast.UseVisualStyleBackColor = true;
-            rbtnFast.CheckedChanged += rbtnFast_CheckedChanged;
-            // 
-            // rbtnDefault
-            // 
-            rbtnDefault.AutoSize = true;
-            rbtnDefault.Cursor = Cursors.Hand;
-            rbtnDefault.Location = new Point(429, 120);
-            rbtnDefault.Name = "rbtnDefault";
-            rbtnDefault.Size = new Size(121, 39);
-            rbtnDefault.TabIndex = 4;
-            rbtnDefault.TabStop = true;
-            rbtnDefault.Text = "DEFAULT";
-            rbtnDefault.UseVisualStyleBackColor = true;
-            rbtnDefault.CheckedChanged += rbtnDefault_CheckedChanged;
-            // 
-            // rbtnSlow
-            // 
-            rbtnSlow.AutoSize = true;
-            rbtnSlow.Cursor = Cursors.Hand;
-            rbtnSlow.Location = new Point(263, 120);
-            rbtnSlow.Name = "rbtnSlow";
-            rbtnSlow.Size = new Size(98, 39);
-            rbtnSlow.TabIndex = 3;
-            rbtnSlow.TabStop = true;
-            rbtnSlow.Text = "SLOW";
-            rbtnSlow.UseVisualStyleBackColor = true;
-            rbtnSlow.CheckedChanged += rbtnSlow_CheckedChanged;
             // 
             // btnRestart
             // 
@@ -267,6 +243,7 @@
             pnlBottom.ResumeLayout(false);
             pnlInfo.ResumeLayout(false);
             pnlInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tbrSpeed).EndInit();
             pnlGameArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbxCanvas).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxBottomWall).EndInit();
@@ -291,9 +268,7 @@
         private System.Windows.Forms.Timer tmrTimer;
         private PictureBox pbxCanvas;
         private Button btnRestart;
-        private RadioButton rbtnFast;
-        private RadioButton rbtnDefault;
-        private RadioButton rbtnSlow;
         private Label label1;
+        private TrackBar tbrSpeed;
     }
 }

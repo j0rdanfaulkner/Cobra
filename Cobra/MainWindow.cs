@@ -1,4 +1,5 @@
 using System.DirectoryServices.ActiveDirectory;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace Cobra
 {
@@ -21,6 +22,7 @@ namespace Cobra
             lblGameOver.Visible = false;
             btnRestart.Text = "START";
             tmrTimer.Interval = _DEFAULT;
+            tbrSpeed.Value = _DEFAULT;
         }
         /// <summary>
         /// method used to start the first instance of the game by calling the 'Restart' method
@@ -265,29 +267,27 @@ namespace Cobra
                 Restart();
             }
         }
-
-        private void rbtnFast_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// sets the speed of the cobra
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tbrSpeed_Scroll(object sender, EventArgs e)
         {
-            tmrTimer.Interval = _FAST;
-            rbtnFast.Enabled = false;
-            rbtnDefault.Enabled = true;
-            rbtnSlow.Enabled = true;
+            tmrTimer.Interval = tbrSpeed.Value;
         }
 
-        private void rbtnDefault_CheckedChanged(object sender, EventArgs e)
+        private void tbrSpeed_KeyDown(object sender, KeyEventArgs e)
         {
-            tmrTimer.Interval = _DEFAULT;
-            rbtnFast.Enabled = true;
-            rbtnDefault.Enabled = false;
-            rbtnSlow.Enabled = true;
+            pbxCanvas.Focus();
         }
 
-        private void rbtnSlow_CheckedChanged(object sender, EventArgs e)
+        private void tbrSpeed_KeyPress(object sender, KeyPressEventArgs e)
         {
-            tmrTimer.Interval = _SLOW;
-            rbtnFast.Enabled = true;
-            rbtnDefault.Enabled = true;
-            rbtnSlow.Enabled = false;
+            if (e.KeyChar == 37 || e.KeyChar == 38 || e.KeyChar == 39 || e.KeyChar == 40)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
