@@ -165,22 +165,7 @@ namespace Cobra
         /// <param name="e"></param>
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Left && _snake.currentDirection != "right")
-            {
-                goLeft = true;
-            }
-            else if (e.KeyCode == Keys.Right && _snake.currentDirection != "left")
-            {
-                goRight = true;
-            }
-            else if (e.KeyCode == Keys.Down && _snake.currentDirection != "up")
-            {
-                goDown = true;
-            }
-            else if (e.KeyCode == Keys.Up && _snake.currentDirection != "down")
-            {
-                goUp = true;
-            }
+            CheckArrowKeysPressed(sender, e);
         }
         /// <summary>
         /// resets the direction variable depending on the last arrow key that was released
@@ -189,22 +174,7 @@ namespace Cobra
         /// <param name="e"></param>
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Left)
-            {
-                goLeft = false;
-            }
-            else if (e.KeyCode == Keys.Right)
-            {
-                goRight = false;
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                goDown = false;
-            }
-            else if (e.KeyCode == Keys.Up)
-            {
-                goUp = false;
-            }
+            CheckArrowKeysRelease(sender, e);
         }
         /// <summary>
         /// draws the snake and food item to the game canvas
@@ -276,17 +246,52 @@ namespace Cobra
         {
             tmrTimer.Interval = tbrSpeed.Value;
         }
-
         private void tbrSpeed_KeyDown(object sender, KeyEventArgs e)
         {
-            pbxCanvas.Focus();
+            e.Handled = true;
+            CheckArrowKeysPressed(sender, e);
         }
-
-        private void tbrSpeed_KeyPress(object sender, KeyPressEventArgs e)
+        private void tbrSpeed_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyChar == 37 || e.KeyChar == 38 || e.KeyChar == 39 || e.KeyChar == 40)
+            e.Handled = true;
+            CheckArrowKeysRelease(sender, e);
+        }
+        private void CheckArrowKeysPressed(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left && _snake.currentDirection != "right")
             {
-                e.Handled = true;
+                goLeft = true;
+            }
+            else if (e.KeyCode == Keys.Right && _snake.currentDirection != "left")
+            {
+                goRight = true;
+            }
+            else if (e.KeyCode == Keys.Down && _snake.currentDirection != "up")
+            {
+                goDown = true;
+            }
+            else if (e.KeyCode == Keys.Up && _snake.currentDirection != "down")
+            {
+                goUp = true;
+            }
+        }
+        private void CheckArrowKeysRelease(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                goLeft = false;
+            }
+            else if (e.KeyCode == Keys.Right)
+            {
+                goRight = false;
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                goDown = false;
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                goUp = false;
             }
         }
     }

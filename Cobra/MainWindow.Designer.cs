@@ -107,7 +107,7 @@
             tbrSpeed.Value = 1;
             tbrSpeed.Scroll += tbrSpeed_Scroll;
             tbrSpeed.KeyDown += tbrSpeed_KeyDown;
-            tbrSpeed.KeyPress += tbrSpeed_KeyPress;
+            tbrSpeed.KeyUp += tbrSpeed_KeyUp;
             // 
             // label1
             // 
