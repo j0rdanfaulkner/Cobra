@@ -64,7 +64,7 @@
             pnlContainer.Controls.Add(pnlBottom);
             pnlContainer.Controls.Add(pnlGameArea);
             pnlContainer.Dock = DockStyle.Fill;
-            pnlContainer.Font = new Font("EurostileLTW03-BoldCond", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point);
+            pnlContainer.Font = new Font("Microsoft Sans Serif", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point);
             pnlContainer.Location = new Point(0, 0);
             pnlContainer.Name = "pnlContainer";
             pnlContainer.Size = new Size(734, 782);
@@ -99,7 +99,7 @@
             lblDifficulty.AutoSize = true;
             lblDifficulty.Location = new Point(614, 120);
             lblDifficulty.Name = "lblDifficulty";
-            lblDifficulty.Size = new Size(103, 35);
+            lblDifficulty.Size = new Size(154, 33);
             lblDifficulty.TabIndex = 8;
             lblDifficulty.Text = "DEFAULT";
             lblDifficulty.TextAlign = ContentAlignment.MiddleCenter;
@@ -129,7 +129,7 @@
             lblChangeSpeed.AutoSize = true;
             lblChangeSpeed.Location = new Point(29, 120);
             lblChangeSpeed.Name = "lblChangeSpeed";
-            lblChangeSpeed.Size = new Size(189, 35);
+            lblChangeSpeed.Size = new Size(265, 33);
             lblChangeSpeed.TabIndex = 6;
             lblChangeSpeed.Text = "CHANGE SPEED:";
             // 
@@ -156,7 +156,7 @@
             lblGameOver.ForeColor = Color.DarkRed;
             lblGameOver.Location = new Point(291, 34);
             lblGameOver.Name = "lblGameOver";
-            lblGameOver.Size = new Size(153, 35);
+            lblGameOver.Size = new Size(208, 33);
             lblGameOver.TabIndex = 1;
             lblGameOver.Text = "GAME OVER!";
             // 
@@ -166,7 +166,7 @@
             lblScore.AutoSize = true;
             lblScore.Location = new Point(29, 34);
             lblScore.Name = "lblScore";
-            lblScore.Size = new Size(95, 35);
+            lblScore.Size = new Size(132, 33);
             lblScore.TabIndex = 0;
             lblScore.Text = "SCORE:";
             // 

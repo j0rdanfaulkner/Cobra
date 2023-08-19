@@ -1,4 +1,5 @@
 using System.DirectoryServices.ActiveDirectory;
+using System.Drawing.Text;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace Cobra
@@ -16,13 +17,24 @@ namespace Cobra
         private const int _SLOW = 10;
         private const int _DEFAULT = 30;
         private const int _FAST = 50;
+        private PrivateFontCollection _pfc = new PrivateFontCollection();
         public MainWindow()
         {
             InitializeComponent();
+            SetLabelFont();
             lblGameOver.Visible = false;
             btnRestart.Text = "START";
             tmrTimer.Interval = _DEFAULT;
             tbrSpeed.Value = _DEFAULT;
+        }
+        private void SetLabelFont()
+        {
+            _pfc.AddFontFile(Path.Combine(Application.StartupPath + "\\Resources\\", "Eurostile Next LT W04 Bold Cond.ttf"));
+            lblScore.Font = new Font(_pfc.Families[0], 22, FontStyle.Regular);
+            lblGameOver.Font = new Font(_pfc.Families[0], 22, FontStyle.Regular);
+            btnRestart.Font = new Font(_pfc.Families[0], 22, FontStyle.Regular);
+            lblChangeSpeed.Font = new Font(_pfc.Families[0], 22, FontStyle.Regular);
+            lblDifficulty.Font = new Font(_pfc.Families[0], 22, FontStyle.Regular);
         }
         /// <summary>
         /// method used to start the first instance of the game by calling the 'Restart' method
